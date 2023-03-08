@@ -2,6 +2,8 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import {Head} from '@inertiajs/inertia-vue3';
+
+
 </script>
 
 <template>
@@ -74,6 +76,7 @@ import {Head} from '@inertiajs/inertia-vue3';
 </template>
 
 <script>
+
 export default {
     props: {
         customers: Array,

@@ -22,8 +22,10 @@
     },
     "dependencies": {
         "@fullcalendar/core": "^6.1.4",
+        "@fullcalendar/daygrid": "^6.1.4",
         "@fullcalendar/resource": "^6.1.4",
         "@fullcalendar/resource-daygrid": "^6.1.4",
+        "@fullcalendar/resource-timeline": "^6.1.4",
         "date-fns": "^2.29.3",
         "jquery": "^3.6.3",
         "vue-moment": "^4.1.0"

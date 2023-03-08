@@ -216,6 +216,9 @@ class BookingsController extends Controller
             'pens' => $pens
         ]);
     }
+
+    // this function was intended to get the booking info to use in an event calendar, the info is
+    // listed as pens with bookings with a start and end date and with the name of the customer that is booked.
     public function getBookings()
     {
         $pens = Pens::all();
@@ -228,8 +231,8 @@ class BookingsController extends Controller
             foreach ($bookings as $booking) {
                 $events[] = [
                     'title' => $booking->customer->firstName,
-                    'start' => Carbon::parse($booking->startDate)->toISOString(),
-                    'end' => Carbon::parse($booking->endDate)->toISOString(),
+                    'start' => $booking->startDate,
+                    'end' => $booking->endDate,
                     'resourceId' => $pen->id,
                 ];
             }
@@ -238,16 +241,12 @@ class BookingsController extends Controller
                 'id' => $pen->id,
                 'title' => $pen->name,
                 'events' => $events,
-
                 ];
 
-
         }
-
         return inertia('Calendar', [
             'resources' => $resources,
         ]);
     }
-
 
 }
