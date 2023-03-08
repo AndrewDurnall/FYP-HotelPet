@@ -1,4 +1,3 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 <template>
     <AuthenticatedLayout>
         <template #header>
