@@ -12,6 +12,7 @@
         "laravel/jetstream": "^3.0",
         "laravel/sanctum": "^2.8",
         "laravel/tinker": "^2.7",
+        "npm-asset/fullcalendar": "^6.1",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
@@ -65,5 +66,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }

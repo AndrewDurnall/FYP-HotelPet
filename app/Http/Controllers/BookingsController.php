@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Bookings;
 use App\Models\Customer;
 use App\Models\pens;
@@ -215,4 +216,38 @@ class BookingsController extends Controller
             'pens' => $pens
         ]);
     }
+    public function getBookings()
+    {
+        $pens = Pens::all();
+        $resources = [];
+
+        foreach ($pens as $pen) {
+            $bookings = $pen->bookings;
+            $events = [];
+
+            foreach ($bookings as $booking) {
+                $events[] = [
+                    'title' => $booking->customer->firstName,
+                    'start' => Carbon::parse($booking->startDate)->toISOString(),
+                    'end' => Carbon::parse($booking->endDate)->toISOString(),
+                    'resourceId' => $pen->id,
+                ];
+            }
+
+            $resources[] = [
+                'id' => $pen->id,
+                'title' => $pen->name,
+                'events' => $events,
+
+                ];
+
+
+        }
+
+        return inertia('Calendar', [
+            'resources' => $resources,
+        ]);
+    }
+
+
 }

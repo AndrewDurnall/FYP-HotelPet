@@ -107,4 +107,7 @@ Route::get('/bookings/check', [BookingsController::class, 'checkAvailability'])-
 Route::get('/bookings/checkEdit/{id}', [BookingsController::class, 'checkAvailabilityEdit'])->name('bookings.checkAvailabilityEdit')->middleware('auth');
 
 
+Route::get('/calendar', [BookingsController::class, 'getBookings'])->name('calendar');
+
+
 require __DIR__.'/auth.php';
