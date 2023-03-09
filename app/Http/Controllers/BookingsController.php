@@ -205,6 +205,10 @@ class BookingsController extends Controller
                     // Check for bookings that are fully encompassed within the date range.
                     $query->where('startDate', '<', $startDate)
                         ->where('endDate', '>', $endDate);
+                })->orWhere(function ($query) use ($startDate, $endDate) {
+                    // Check for bookings that are within the original date range.
+                    $query->where('startDate', '>', $startDate)
+                        ->where('endDate', '<', $endDate);
                 });
         })->where('id', $booking->pen_id)->exists();
 
@@ -217,8 +221,7 @@ class BookingsController extends Controller
         ]);
     }
 
-    // this function was intended to get the booking info to use in an event calendar, the info is
-    // listed as pens with bookings with a start and end date and with the name of the customer that is booked.
+    // this function sends the required data for bookings and pens and customers to the Calendar page to display them in the calendar view.
     public function getBookings()
     {
         $bookings = Bookings::with('pens', 'customer')->get();

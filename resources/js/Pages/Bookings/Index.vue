@@ -28,7 +28,7 @@ import { Head } from '@inertiajs/inertia-vue3';
                 </thead>
                 <tbody>
 
-                <tr class="bg-white overflow-hidden shadow-sm sm:rounded-lg d-flex justify-content-around border-b-2" v-for="booking in bookings" :key="booking.id">
+                <tr class="bg-white overflow-hidden shadow-sm sm:rounded-lg d-flex justify-content-around border-b-2" v-for="booking in reversedBookings" :key="booking.id">
                     <td class="text-left">{{ booking.id}}</td>
                     <td class="text-left">{{ booking.customer.firstName}} {{ booking.customer.lastName}}</td>
                     <td class="text-left">{{ booking.pens.description }} {{ booking.pens.penNumber }}</td>
@@ -63,9 +63,15 @@ export default {
                 this.$inertia.delete(`/bookings/${id}`);
             }
         },
-        //formatting the date to appear readable
+        //formatting the date to appear readable on the bookings list
         formatDate(date){
             return format(new Date(date), 'dd-MM-yyyy')
+        },
+    },
+    // formatting the bookings list to be newest at the top.
+    computed: {
+        reversedBookings() {
+            return this.bookings.slice().reverse();
         },
     },
 }
