@@ -222,9 +222,11 @@ class BookingsController extends Controller
     public function getBookings()
     {
         $bookings = Bookings::with('pens', 'customer')->get();
+        $pens = Pens::all();
 
         return Inertia::render('Calendar', [
             'bookings' => $bookings,
+            'pens' => $pens
         ]);
     }
 

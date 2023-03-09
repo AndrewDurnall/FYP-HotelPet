@@ -8,7 +8,7 @@ import {Head} from '@inertiajs/inertia-vue3';</script>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Calendar</h2>
         </template>
 
-        <div class="py-12">
+        <div class="py-5">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
@@ -18,16 +18,22 @@ import {Head} from '@inertiajs/inertia-vue3';</script>
                                 <thead>
                                 <tr>
                                     <th></th>
-                                    <th v-for="day in days" :key="day" class="text-center border-2 p-2" style="vertical-align: middle; text-align: center;">{{ formatDate(day) }}</th>
+                                    <th v-for="day in days" :key="day" class="text-center border-2 p-2"
+                                        style="vertical-align: middle; text-align: center;">{{ formatDate(day) }}
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="pen in pens" :key="pen.id">
-                                    <td class="text-center font-weight-bold" style="vertical-align: middle; text-align: center;">{{ pen.name }}</td>
-                                    <td v-for="day in days" :key="day" class="text-center" style="vertical-align: middle; text-align: center; min-width: 120px;">
-                                        <ul class="list-unstyled" style="margin: 0; padding: 0; list-style: none;">
-                                            <li v-for="booking in getBookingsForPenAndDay(pen.id, day)" :key="booking.id" style="font-size: 14px; line-height: 1.5;">
-                                                <span>{{ booking.customer.firstName }}</span>
+                                <tr v-for="pens in pens" :key="pens.id">
+                                    <td class="text-center font-weight-bold border-2"
+                                        style="vertical-align: middle; text-align: center;">{{ pens.description }} {{ pens.penNumber }}
+                                    </td>
+                                    <td v-for="day in days" :key="day" class="text-center border-2"
+                                        style="vertical-align: middle; text-align: center; min-width: 120px;">
+                                        <ul class="list-unstyled" style="margin: 0; padding: 0; list-style: none; background-color: darkgreen">
+                                            <li v-for="bookings in getBookingsForPenAndDay(pens.id, day)"
+                                                :key="bookings.id" style="font-size: 14px; line-height: 1.5; background-color: lightblue">
+                                                <span>{{ bookings.customer.firstName }}</span>
                                             </li>
                                         </ul>
                                     </td>
@@ -46,7 +52,7 @@ import {Head} from '@inertiajs/inertia-vue3';</script>
 export default {
     props: {
         pens: Array, // an array of pen objects with an id and name property
-        bookings: Array // an array of booking objects with a pen_id, date, and customer object
+        bookings: Array // an array of booking objects with a pen_id, startDate, endDate, and customer object
     },
     computed: {
         days() {
@@ -63,16 +69,18 @@ export default {
     methods: {
         formatDate(date) {
             // format a date object as "Day, Month Date"
-            return date.toLocaleString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+            return date.toLocaleString('en-US', {weekday: 'long', month: 'short', day: 'numeric'});
         },
         getBookingsForPenAndDay(penId, day) {
             // return an array of bookings for a given pen and day
             return this.bookings.filter(booking => {
-                const bookingDate = new Date(booking.date);
+                const bookingStartDate = new Date(booking.startDate);
+                const bookingEndDate = new Date(booking.endDate);
                 return booking.pens.id === penId &&
-                    bookingDate.toDateString() === day.toDateString();
+                    bookingStartDate <= day && bookingEndDate >= day;
             });
         }
     }
 };
 </script>
+
