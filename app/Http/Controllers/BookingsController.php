@@ -221,31 +221,10 @@ class BookingsController extends Controller
     // listed as pens with bookings with a start and end date and with the name of the customer that is booked.
     public function getBookings()
     {
-        $pens = Pens::all();
-        $resources = [];
+        $bookings = Bookings::with('pens', 'customer')->get();
 
-        foreach ($pens as $pen) {
-            $bookings = $pen->bookings;
-            $events = [];
-
-            foreach ($bookings as $booking) {
-                $events[] = [
-                    'title' => $booking->customer->firstName,
-                    'start' => $booking->startDate,
-                    'end' => $booking->endDate,
-                    'resourceId' => $pen->id,
-                ];
-            }
-
-            $resources[] = [
-                'id' => $pen->id,
-                'title' => $pen->name,
-                'events' => $events,
-                ];
-
-        }
-        return inertia('Calendar', [
-            'resources' => $resources,
+        return Inertia::render('Calendar', [
+            'bookings' => $bookings,
         ]);
     }
 
