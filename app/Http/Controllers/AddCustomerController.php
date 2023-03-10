@@ -53,6 +53,8 @@ class AddCustomerController extends Controller
         $customer->emergencyName = $request->emergencyName;
         $customer->emergencyNumber = $request->emergencyNumber;
         $customer->save();
+
+        return redirect()->route('customers.index');
     }
 
     /**

@@ -61,7 +61,8 @@ const form = useForm({
                     <input placeholder="Microchip Number" class="w-full" type="text" v-model="form.microChip" />
                     <br>
                     <br>
-                    <input placeholder="Vaccinations Renewal Date *" required class="w-full" type="date" v-model="form.vaccinationDate" />
+                    <label for="vacrenew"> Vaccination Renewal Date *</label>
+                    <input id="vacrenew" placeholder="Vaccinations Renewal Date *" required class="w-full" type="date" v-model="form.vaccinationDate" />
                     <br>
                     <br>
                     <input placeholder="Special Feeding Requirements (If needed)" class="w-full" type="text" v-model="form.feedingRequirements" />
