@@ -57,11 +57,9 @@ class PensController extends Controller
         $pens->description = $validatedData['description'];
         $pens->save();
 
-        
         return redirect()->route('pens.index');
     }
-
-
+    
     /**
      * Display the specified resource.
      *
