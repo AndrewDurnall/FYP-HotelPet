@@ -88,7 +88,6 @@ Route::delete('/customers/{customer}', [CustomerController::class, 'destroy'])->
 // Route for when a pet is created with a customer as its owner
 Route::get('/customers/{customer}/pets/create', [PetsController::class, 'create'])->name('pets.create')->middleware('auth');
 
-
 // Pet Editing Routes
 Route::get('/pets/{pets}/edit', [PetsController::class, 'edit'])->name('pets.edit')->middleware('auth');
 Route::put('/pets/{pets}', [PetsController::class, 'update'])->name('pets.update')->middleware('auth');
@@ -102,13 +101,19 @@ Route::get('/bookings/{id}/edit', [BookingsController::class, 'edit'])->name('bo
 Route::put('/bookings/{booking}', [BookingsController::class, 'update'])->name('bookings.update')->middleware('auth');
 Route::delete('/bookings/{bookings}', [BookingsController::class, 'destroy'])->name('bookings.destroy')->middleware('auth');
 
-
 // Checking Pen Availability
 Route::get('/bookings/check', [BookingsController::class, 'checkAvailability'])->name('bookings.checkAvailability')->middleware('auth');
 Route::get('/bookings/checkEdit/{id}', [BookingsController::class, 'checkAvailabilityEdit'])->name('bookings.checkAvailabilityEdit')->middleware('auth');
 
+// Route for displaying the calendar view with bookings.
+Route::get('/calendar', [BookingsController::class, 'getBookings'])->name('calendar')->middleware('auth');;
 
-Route::get('/calendar', [BookingsController::class, 'getBookings'])->name('calendar');
-
+// Pen Viewing And Editing Routes
+Route::get('/pens', [PensController::class, 'index'])->name('pens.index')->middleware('auth');
+Route::get('/pens/create', [PensController::class, 'create'])->name('pens.create')->middleware('auth');
+Route::post('/pens', [PensController::class, 'store'])->name('pens.store')->middleware('auth');
+Route::get('/pens/{pens}/edit', [PensController::class, 'edit'])->name('pens.edit')->middleware('auth');
+Route::put('/pens/{pens}', [PensController::class, 'update'])->name('pens.update')->middleware('auth');
+Route::delete('/pens/{pens}', [PensController::class, 'destroy'])->name('pens.destroy')->middleware('auth');
 
 require __DIR__.'/auth.php';
