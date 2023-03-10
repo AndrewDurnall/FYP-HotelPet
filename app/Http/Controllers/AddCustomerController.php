@@ -40,6 +40,7 @@ class AddCustomerController extends Controller
      */
     public function store(Request $request)
     {
+        //Storing the new customer details in the customer's table with the details given form the form.
         $customer = new Customer;
         $customer->firstName = $request->firstName;
         $customer->lastName = $request->lastName;
@@ -54,6 +55,7 @@ class AddCustomerController extends Controller
         $customer->emergencyNumber = $request->emergencyNumber;
         $customer->save();
 
+        //returning the user to the list of customers
         return redirect()->route('customers.index');
     }
 

@@ -19,8 +19,10 @@ class BookingsController extends Controller
      */
     public function index()
     {
+        // Collecting all bookings with their related pen and customer
         $bookings = Bookings::with('pens', 'customer')->get();
 
+        // returning the user to the list of bookings
         return Inertia::render('Bookings/Index', [
             'bookings' => $bookings,
         ]);
@@ -33,7 +35,9 @@ class BookingsController extends Controller
      */
     public function create()
     {
+        //Fetching all the customers for the dropdown list.
         $customers = Customer::all();
+        //Fetching all the pens for the dropdown list.
         $pens = Pens::all();
         $bookings = Bookings::with('pens')->get();
         return Inertia::render('Bookings/Create', [
@@ -60,7 +64,7 @@ class BookingsController extends Controller
 
         ]);
 
-        // Create new booking with the data
+        // Create new booking with the data from the form
         $booking = new Bookings();
         $booking->pens_id = $validatedData['pens_id'];
         $booking->customer_id = $validatedData['customer_id'];

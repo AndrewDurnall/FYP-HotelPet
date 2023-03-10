@@ -44,12 +44,20 @@ class PensController extends Controller
      */
     public function store(Request $request)
     {
-        $pens = new Pens;
-        $pens->penNumber = $request->penNumber;
-        $pens->description = $request->description;
+        // Validate the request data
+        $validatedData = $request->validate([
+            'penNumber' => 'required',
+            'description' => 'required',
 
+        ]);
+
+        // Create new pen with the data from the pen creation form
+        $pens = new Pens();
+        $pens->penNumber = $validatedData['penNumber'];
+        $pens->description = $validatedData['description'];
         $pens->save();
 
+        
         return redirect()->route('pens.index');
     }
 
