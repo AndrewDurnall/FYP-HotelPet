@@ -17,6 +17,7 @@ class AddCustomerController extends Controller
      */
     public function index()
     {
+        // Showing the vue called NewCustomer.
         return Inertia::render('NewCustomer', [
             //
         ]);

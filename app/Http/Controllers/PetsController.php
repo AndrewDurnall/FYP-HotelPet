@@ -16,8 +16,10 @@ class PetsController extends Controller
      */
     public function index()
     {
+        //getting all the customers for the adding of a pet to a customer with the "add pet" form
         $customers = Customer::all();
 
+        //showing the form to add new pet to a registered customer with the above customer details
         return Inertia::render('AddPet', [
             'customers' => $customers,
         ]);
@@ -57,7 +59,7 @@ class PetsController extends Controller
             'medicationDetails' => 'nullable|string|max:255',
         ]);
 
-        // Create new pet with the data
+        // Create new pet with the validated data
         $pet = new Pets;
         $pet->petName = $request->petName;
         $pet->petAge = $request->petAge;
@@ -74,10 +76,9 @@ class PetsController extends Controller
         $customer = Customer::find($request->input('customer_id'));
         $customer->pets()->save($pet);
 
-        // Redirect to the customers page
+        // Redirect to the customers page via the index method of this controller
         return redirect()->route('customers.index')->with('success', 'Pet created successfully.');
     }
-
 
     /**
      * Display the specified resource.
@@ -98,6 +99,7 @@ class PetsController extends Controller
      */
     public function edit(Pets $pets)
     {
+        // displays the edit vue component with the pets details for the pet via the id sent with the web.php routing
         return Inertia::render('Pets/Edit', [
                     'pets' => $pets,
                 ]);
@@ -112,7 +114,10 @@ class PetsController extends Controller
      */
     public function update(Request $request, Pets $pets)
     {
+        // updates the pet in the pets table access via the pet id sent via url routing in web.php
         $pets->update($request->all());
+
+        // Redirect to the customers page via the index method of this controller
         return redirect()->route('customers.index');
     }
 
@@ -124,7 +129,10 @@ class PetsController extends Controller
      */
     public function destroy(Pets $pets)
     {
+        // removes the pet from the pets table access via the pet id sent via routing in web.php
         $pets->delete();
+
+        // Redirect to the customers page via the index method of this controller
         return redirect()->route('customers.index')->with('Pet deleted successfully.');
     }
 }

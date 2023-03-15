@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pets extends Model
 {
+    // validating the data as it is passed the database
     use HasFactory;
 
     protected $fillable = [
@@ -24,6 +25,7 @@ class Pets extends Model
         'medicationDetails',
     ];
 
+    // assigning the database relation of a pet belonging to a customer
     public function customer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Customer::class);

@@ -16,6 +16,8 @@ class PensSeeder extends Seeder
      */
     public function run()
     {
+
+        // Seeding example data into the pens table multiple times to add multiple pens.
         DB::table('pens')->insert([
             'penNumber' => 1,
             'description' => "Cat Chalet",

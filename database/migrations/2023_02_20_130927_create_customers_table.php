@@ -13,7 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
+        // drop the customers table if it exists
         Schema::dropIfExists('customers');
+
+        // create a table called customers with columns as follows
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('firstName');

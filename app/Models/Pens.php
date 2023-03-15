@@ -9,6 +9,7 @@ class Pens extends Model
 {
     use HasFactory;
 
+    // validating the data as it is passed the database
     protected $table = 'pens';
 
     protected $fillable = [
@@ -16,16 +17,10 @@ class Pens extends Model
         'description',
     ];
 
+    // assigning the database relation of a pen that can have many bookings
     public function bookings()
     {
         return $this->hasMany(Bookings::class);
     }
 
-    public function scopeAvailableBetween($query, $start, $end)
-    {
-        return $query->whereDoesntHave('bookings', function ($query) use ($start, $end) {
-            $query->where('startDate', '<', $end)
-                ->where('endDate', '>', $start);
-        });
-    }
 }

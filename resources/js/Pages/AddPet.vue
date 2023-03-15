@@ -4,6 +4,7 @@ import {useForm, Head} from '@inertiajs/inertia-vue3';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
+// creating a form object for the use of passing the data forward.
 const form = useForm({
     customer_id:'',
     petName: '',
@@ -33,9 +34,12 @@ const form = useForm({
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
                 <p>*Required Fields</p>
                             <br>
+                            <!-- when the form is submitted the data is passed to the database via the pets controller and store function and the form resets -->
                 <form @submit.prevent="form.post(route('pets.store'), { onSuccess: () => form.reset() })">
                     <label for="selection_customer">Select A Customer*</label>
                     <select id="selection_customer" v-model="form.customer_id" class="w-full" required>
+
+                        <!-- providing a dynamic drop down of existing customers to assign a pet to with their first & last names and first line of address -->
                         <option v-for="customer in customers" :value="customer.id" >{{ customer.firstName + " " + customer.lastName + " - " + customer.addressLine1}}</option>
                     </select>
                     <br>
@@ -89,6 +93,7 @@ const form = useForm({
 
         export default {
             props: {
+                // providing the customers for use in the form
                 customers: Array,
             },
 

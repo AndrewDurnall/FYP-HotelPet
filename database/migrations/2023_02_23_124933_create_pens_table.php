@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
+        // drop the pens table if it exists
         Schema::dropIfExists('pens');
+        // create a table called pens with columns as follows
         Schema::create('pens', function (Blueprint $table) {
             $table->id();
             $table->integer('penNumber');

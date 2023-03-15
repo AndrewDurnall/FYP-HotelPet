@@ -59,7 +59,7 @@ class PensController extends Controller
 
         return redirect()->route('pens.index');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -79,6 +79,7 @@ class PensController extends Controller
      */
     public function edit(pens $pens): \Inertia\Response
     {
+        // redirecting user edit form for the pen whose edit button was clicked on
         return Inertia::render('Pens/Edit', [
             'pens' => $pens,
         ]);
@@ -94,7 +95,10 @@ class PensController extends Controller
 
     public function update(Request $request, Pens $pens)
     {
+        // updating the pen details in the pens table with the request information from the pen edit form
         $pens->update($request->all());
+
+        // redirecting the user to the list of pens via this controllers index function
         return redirect()->route('pens.index');
     }
 
@@ -106,20 +110,17 @@ class PensController extends Controller
      */
     public function destroy(pens $pens)
     {
+        // removing the pen from the database via its penID which is passed via the url routing in web.php
         $pens->delete();
-        return redirect()->route('pens.index')->with('Pen deleted successfully.');
+
+        // redirecting the user to the list of pens via this controllers index function
+        return redirect()->route('pens.index');
     }
 
     public function bookings()
     {
+        // returning the pens with the bookings that are attached to them
         return $this->hasMany(Bookings::class);
     }
 
-    public function scopeAvailableBetween($query, $start, $end)
-    {
-        return $query->whereDoesntHave('bookings', function ($query) use ($start, $end) {
-            $query->where('start_date', '<', $end)
-                ->where('end_date', '>', $start);
-        });
-    }
 }

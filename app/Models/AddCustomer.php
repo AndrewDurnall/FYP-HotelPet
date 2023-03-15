@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class AddCustomer extends Model
 {
+
     use HasFactory;
+
+    // validating the data as it is passed the database
     protected $fillable = [
         'firstName',
         'lastName',

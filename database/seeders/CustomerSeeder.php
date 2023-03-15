@@ -16,6 +16,8 @@ class CustomerSeeder extends Seeder
      */
     public function run()
     {
+
+        // Seeding example data into the customers table multiple times to add multiple customers.
         DB::table('customers')->insert([
             'firstName' => "Andrew",
             'lastName' => "Durnall",

@@ -17,7 +17,7 @@ class BookingsSeeder extends Seeder
     public function run()
     {
 
-        // Pen 6 available
+        // Seeding example data into the Bookings table multiple times to add multiple bookings.
 
         DB::table('bookings')->insert([
             'pens_id' => 1,

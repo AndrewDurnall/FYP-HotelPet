@@ -16,6 +16,7 @@ class PetSeeder extends Seeder
      */
     public function run()
     {
+        // Seeding example data into the pets table multiple times to add multiple pets.
         DB::table('pets')->insert([
             'customer_id' => 1,
             'petName' => "Spot",

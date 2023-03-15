@@ -13,7 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
+        // drop the bookings table if it exists
         Schema::dropIfExists('bookings');
+
+        // create a table called bookings with columns as follows
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('pens_id');
@@ -22,8 +25,10 @@ return new class extends Migration
             $table->date('endDate');
             $table->timestamps();
 
-
+            //assigning the foreign key to the id of the pens table
             $table->foreign('pens_id')->references('id')->on('pens')->onDelete('cascade');
+
+            //assigning the foreign key to the id of the customers table
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
         });
     }

@@ -13,7 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
+        // drop the pets table if it exists
         Schema::dropIfExists('pets');
+
+        // create a table called pets with columns as follows
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
@@ -31,6 +34,7 @@ return new class extends Migration
             $table->dateTime('updated_at');
             $table->dateTime('created_at');
 
+            //assigning the foreign key to the id of the customers table
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
         });
 

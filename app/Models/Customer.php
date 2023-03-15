@@ -7,16 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
+
+    // assigning the database relation of a customer that can have many pets
     public function pets()
     {
         return $this->hasMany(Pets::class);
     }
 
+    // assigning the database relation of a customer that can have many bookings
     public function bookings()
     {
         return $this->hasMany(Bookings::class);
     }
 
+    // function to get all the customers data from the database
     public static function getCustomers()
     {
         return static::all();
@@ -24,6 +28,7 @@ class Customer extends Model
 
     use HasFactory;
 
+    // validating the data as it is passed the database
     protected $table = 'customers';
 
     protected $fillable = [
