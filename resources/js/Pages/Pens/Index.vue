@@ -28,6 +28,8 @@ import {Head} from '@inertiajs/inertia-vue3';
                             </thead>
 
                             <tbody>
+                            <!-- displaying the pens with the pen number, pen description and a button for
+                                                  editing and deleting the pen for each pen in the pens table -->
                             <tr class="bg-white overflow-hidden shadow-sm sm:rounded-lg d-flex justify-content-around border-b-2"
                                 v-for="pen in pens" :key="pens.id">
 
@@ -35,7 +37,10 @@ import {Head} from '@inertiajs/inertia-vue3';
                                 <td class="pr-1 text-left">{{ pen.description }}</td>
 
                                 <td>
+                                    <!-- edit button redirects the user to the edit form for the pen with the pen id passed in the url -->
                                     <a :href="`/pens/${pen.id}/edit`" class="mr-1 text-yellow-600 underline ">Edit</a>
+
+                                    <!-- delete button to delete the booking based on its pen id -->
                                     <button class="text-red-700 underline" @click="deletePens(pen.id)">Delete
                                     </button>
                                 </td>
@@ -57,10 +62,12 @@ import {Head} from '@inertiajs/inertia-vue3';
 <script>
 
 export default {
+    // providing pens as an array passed from the pens controller
     props: {
         pens: Array,
     },
     methods: {
+        // using the destroy function of the pens controller that is passed the id from this function in the url to delete the pen
         deletePens(id) {
             if (confirm('Are you sure you want to delete this pen?')) {
                 this.$inertia.delete(`/pens/${id}`);

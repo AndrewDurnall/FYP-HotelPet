@@ -31,46 +31,52 @@ Route::get('/', function () {
     ]);
 });
 
+// route for dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+// route for bookings
 Route::resource('Bookings', BookingsController::class)
-
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
 
+// route for pets
 Route::resource('pets', PetsController::class)
-
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
 
+// route for addcustomer
 Route::resource('addcustomer', AddCustomerController::class)
-
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
 
-
+// route for customers
 Route::get('/customers', function () {
     return Inertia::render('Customers');
 })->middleware(['auth', 'verified'])->name('customers');
 
+// route for calendar
 Route::get('/calendar', function () {
     return Inertia::render('Calendar');
 })->middleware(['auth', 'verified'])->name('calendar');
 
+// route for bookings
 Route::get('/bookings', function () {
     return Inertia::render('Bookings');
 })->middleware(['auth', 'verified'])->name('bookings');
 
+// route for new customer view
 Route::get('/newcustomer', function () {
     return Inertia::render('NewCustomer');
 })->middleware(['auth', 'verified'])->name('newcustomer');
 
+// route for new booking view
 Route::get('/newbooking', function () {
     return Inertia::render('NewBooking');
 })->middleware(['auth', 'verified'])->name('newbooking');
 
+// route for profile authentication
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');

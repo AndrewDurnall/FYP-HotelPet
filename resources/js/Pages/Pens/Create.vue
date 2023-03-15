@@ -16,6 +16,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <p>*Required Fields</p>
+                    <!-- when the form is submitted the data is passed to the database via the pens controller and store function and the form resets -->
                     <form @submit.prevent="form.post(route('pens.store'), { onSuccess: () => form.reset() })">
 
                         <label>Pen Number *:</label>
@@ -39,19 +40,11 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import {Inertia} from '@inertiajs/inertia';
 import {useForm} from "@inertiajs/inertia-vue3";
 
+
+// creating a form object for the use of passing the data forward.
 const form = useForm({
     penNumber: '',
     description: '',
 });
 
-
-export default {
-    data() {
-        return {
-            penNumber: null,
-            description: null,
-        };
-    },
-
-};
 </script>

@@ -4,7 +4,7 @@ import {useForm, Head} from '@inertiajs/inertia-vue3';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
-
+// creating a form object for the use of passing the data forward.
 const form = useForm({
     firstName: '',
     lastName: '',
@@ -32,7 +32,7 @@ const form = useForm({
         <div class="py-5">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
-
+                <!-- when the form is submitted the data is passed to the database via the add customer controller and the form resets -->
                 <form @submit.prevent="form.post(route('addcustomer.store'), { onSuccess: () => form.reset() })">
                     <p>*Required Fields</p>
                     <br>

@@ -27,6 +27,9 @@ import {Head} from '@inertiajs/inertia-vue3';</script>
 
                         </div>
 
+
+                        <!-- Table for the calendar view with as many rows as there are registered pens, working from the current date for 7 days,
+                         showing bookings as highlighted sections of the grid in line with the date and pen and labelled with the customer for the booking-->
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>

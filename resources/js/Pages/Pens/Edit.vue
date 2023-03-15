@@ -16,6 +16,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <p>*Required Fields</p>
+                    <!--Form to show pen details that are already populated by the pen data from the pen id sent from the edit function of the pens controller-->
                     <form @submit.prevent="submitForm">
 
                         <label>Pen Number *:</label>
@@ -45,12 +46,14 @@ export default {
     data() {
         return {
             form: {
+                // populating the form with the data passed from the pen id so that the form can be edited easily
                 penNumber: this.pens.penNumber,
                 description: this.pens.description,
             },
         };
     },
     methods: {
+        // submitting the form to the pens controller via the update function with the id of the pen passed via the url
         submitForm() {
             Inertia.put(`/pens/${this.pens.id}`, this.form);
         },

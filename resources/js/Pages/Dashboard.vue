@@ -48,14 +48,18 @@ import {Head} from '@inertiajs/inertia-vue3';
 <script>
 export default {
     props: {
+        // using the pens count as a number passed from the dashboard controller
         pensCount: {
             type: Number,
             required: true,
         },
+        // using the pens in use count as a number passed from the dashboard controller
         pensInUse: {
             type: Number,
             required: true,
         },
+
+        // using the current date as a string passed from the dashboard controller
         date: {
             type: String,
             required: true,

@@ -21,6 +21,8 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
 
                     <div>
+
+                        <!-- providing details of the existing booking for ease of reference above the date selection which checks availability-->
                         <h2 class="font-semibold text-xl text-gray-800 leading-tight">Existing Booking Details</h2>
                         <ul>
                             <li>{{booking.customer.firstName}} {{booking.customer.lastName}} - {{booking.customer.houseNumberOrName}} {{booking.customer.addressLine1}}</li>
@@ -29,9 +31,8 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
                         </ul>
 
                         <br>
+                        <!-- form to check new booking options availability, which uses the update function of the bookings controller on submit -->
                         <form @submit.prevent="form.put(route('bookings.update', this.booking.id), { onSuccess: () => form.reset() })">
-
-
 
 
                             <div id="datepickers" class="max-w-7xl mx-auto ">
@@ -102,7 +103,7 @@ import axios from 'axios';
 import {useForm} from "@inertiajs/inertia-vue3";
 import { format } from 'date-fns'
 
-
+// form for the edit bookigns view
 const form = useForm({
     pens_id: '',
     startDate: '',
@@ -111,6 +112,7 @@ const form = useForm({
 });
 
 export default {
+    // customer booking and customers objects passed from the bookings controller
     props: {
         customer: Object,
         booking: Object,
@@ -119,7 +121,9 @@ export default {
 
     data() {
         return {
+            // availability object initialised with null
             availability: null,
+            // pens object initialised with an empty array
             pens: [],
         };
     },

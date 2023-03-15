@@ -28,6 +28,8 @@ import { Head } from '@inertiajs/inertia-vue3';
                 </thead>
                 <tbody>
 
+                <!-- displaying the bookings with the booking id, related customer details, related pen details and a button for
+                                                                                                editing and deleting the booking for each booking in the bookings table -->
                 <tr class="bg-white overflow-hidden shadow-sm sm:rounded-lg d-flex justify-content-around border-b-2" v-for="booking in reversedBookings" :key="booking.id">
                     <td class="text-left">{{ booking.id}}</td>
                     <td class="text-left">{{ booking.customer.firstName}} {{ booking.customer.lastName}}</td>
@@ -36,7 +38,10 @@ import { Head } from '@inertiajs/inertia-vue3';
                     <td class="text-left">{{ formatDate(booking.endDate) }}</td>
 
                     <td>
+                        <!-- edit button redirects the user to the edit form for the booking with the id passed in the url -->
                         <a :href="`/bookings/${booking.id}/edit`" class="mr-1 text-yellow-600 underline ">Edit</a>
+
+                        <!-- delete button to delete the booking based on its booking id -->
                         <button class="text-red-700 underline" @click="deleteBooking(booking.id)" >Delete</button>
                     </td>
                 </tr>
@@ -52,12 +57,14 @@ import {format} from "date-fns";
 
 export default {
     props: {
+        // providing bookings as an array passed from the bookings controller
         bookings: {
             type: Array,
             required: true
         }
     },
     methods: {
+        // using the destroy function of the bookings controller that is passed the id from this function in the url to delete the booking
         deleteBooking(id) {
             if (confirm('Are you sure you want to delete this booking?')) {
                 this.$inertia.delete(`/bookings/${id}`);

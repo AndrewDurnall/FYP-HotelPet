@@ -10,6 +10,9 @@ defineProps({
 });
 </script>
 
+
+<!-- Initial log in page that shows logo imported from Applicationlogo which is a vector, then shows login button under, which when clicked allows the user to login
+at which point they either get taken to the dashboard view and are logged in, or they do not, depending on whether they succeed to enter the correct login details-->
 <template>
     <Head title="Welcome" />
 

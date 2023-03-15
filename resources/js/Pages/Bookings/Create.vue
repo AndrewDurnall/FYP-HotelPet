@@ -113,7 +113,9 @@ export default {
         customers: Array,
     },
     methods: {
-
+// method that checks availabiliy by sending the start and end dates to the bookings controller checkAvailability function which returns with an array of pens available for the selected dates
+// or a statement that there are no pens available for the selected dates and then displays either a dynamic drop down on screen of available pens or the message
+// "no pens are available" and doesnt load any more of the form.
         checkAvailability() {
             const startDate = form.startDate;
             const endDate = form.endDate;

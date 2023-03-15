@@ -29,6 +29,8 @@ import {Head} from '@inertiajs/inertia-vue3';
                             </thead>
                             <tbody>
 
+                            <!-- displaying the customers with the customer first name, last name address and associated pets with
+                            an edit and a delete button for each customer in the customers table-->
                             <tr class="bg-white overflow-hidden shadow-sm sm:rounded-lg d-flex justify-content-around border-b-2"
                                 v-for="customer in customers" :key="customer.id">
 
@@ -46,16 +48,17 @@ import {Head} from '@inertiajs/inertia-vue3';
                                     <ul>
                                         <li v-for="pet in customer.pets" :key="pet.id">
                                             <a :href="`/pets/${pet.id}/edit`"
-                                               class="mr-1 text-green-600 underline ">{{ pet.species }} : {{
-                                                    pet.petName
-                                                }}</a>
+                                               class="mr-1 text-green-600 underline ">{{ pet.species }} : {{pet.petName }}</a>
 
                                         </li>
                                     </ul>
                                 </td>
 
                                 <td>
+                                    <!-- edit button redirects the user to the edit form for the customer with the id passed in the url -->
                                     <a :href="`/customers/${customer.id}/edit`" class="mr-1 text-yellow-600 underline ">Edit</a>
+
+                                    <!-- delete button to delete the customer based on its customer id -->
                                     <button class="text-red-700 underline" @click="deleteCustomer(customer.id)">Delete
                                     </button>
                                 </td>
@@ -79,9 +82,11 @@ import {Head} from '@inertiajs/inertia-vue3';
 
 export default {
     props: {
+        // providing customers as an array passed from the customer controller
         customers: Array,
     },
     methods: {
+        // using the destroy function of the customer controller that is passed the id from this function in the url to delete the customer
         deleteCustomer(id) {
             if (confirm('Are you sure you want to delete this customer?')) {
                 this.$inertia.delete(`/customers/${id}`);

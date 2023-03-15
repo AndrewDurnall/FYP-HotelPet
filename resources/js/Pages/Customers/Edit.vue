@@ -16,6 +16,8 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <p>*Required Fields</p>
+
+<!--Form to show customer details that are already populated by the customer data from the customer id sent from the edit function of the customer controller-->
         <form @submit.prevent="submitForm">
 
             <label>First Name *:</label>
@@ -76,9 +78,12 @@ import { Inertia } from '@inertiajs/inertia';
 
 export default {
     props: {
+        // utilising the customer data passed from the customer controller edit function
         customer: Object,
     },
     data() {
+
+        // populating the form with the data passed from the customer id so that the form can be edited easily
         return {
             form: {
                 firstName: this.customer.firstName,
@@ -96,6 +101,8 @@ export default {
         };
     },
     methods: {
+
+        // submitting the form to the customer controller via the update function with the id of the customer passed via the url
         submitForm() {
             Inertia.put(`/customers/${this.customer.id}`, this.form);
         },
