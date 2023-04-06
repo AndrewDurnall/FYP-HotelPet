@@ -16,11 +16,11 @@ import {Head} from '@inertiajs/inertia-vue3';</script>
                         <!-- Buttons to show bookings for next and previous 7 days -->
                         <div class="flex justify-between mb-5">
                             <!-- Button to show bookings for previous 7 days -->
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="previousWeekButton">
+                            <button style="background: #1F2937" class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="previousWeekButton">
                                 Previous 7 Days
                             </button>
                             <!-- Button to show bookings for next 7 days -->
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="nextWeekButton">
+                            <button style="background: #1F2937" class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="nextWeekButton">
                                 Next 7 Days
                             </button>
 

@@ -12,7 +12,7 @@ import {Head} from '@inertiajs/inertia-vue3';
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Existing Pens</h2>
-            <a :href="`/pens/create`" class="mr-1 text-green-600 underline ">Create New Pen</a>
+            <a :href="`/pens/create`" style="color: #006400" class="mr-1 text-green-600 underline ">Create New Pen</a>
         </template>
 
         <div class="py-5">
@@ -38,10 +38,10 @@ import {Head} from '@inertiajs/inertia-vue3';
 
                                 <td>
                                     <!-- edit button redirects the user to the edit form for the pen with the pen id passed in the url -->
-                                    <a :href="`/pens/${pen.id}/edit`" class="mr-1 text-yellow-600 underline ">Edit</a>
+                                    <a :href="`/pens/${pen.id}/edit`" style="color: #006400; font-weight: bold"  class="mr-1 text-yellow-600 underline ">Edit</a>
 
                                     <!-- delete button to delete the booking based on its pen id -->
-                                    <button class="text-red-700 underline" @click="deletePens(pen.id)">Delete
+                                    <button style="color: #A82726; font-weight: bold" class="underline" @click="deletePens(pen.id)">Delete
                                     </button>
                                 </td>
                             </tr>

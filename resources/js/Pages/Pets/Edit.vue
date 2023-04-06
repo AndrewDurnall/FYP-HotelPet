@@ -65,12 +65,12 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
                 <input  class="w-full" type="text" v-model="form.medicationDetails" />
             <br>
                     <br>
-                <PrimaryButton type="submit">Update Pet</PrimaryButton>
+                <PrimaryButton  type="submit">Update Pet</PrimaryButton>
 
         </form>
                 <br>
                 <!-- button to delete the pet with the function deletePet in script section-->
-                <PrimaryButton @click="deletePet(pets.id)" class="bg-red-700">Delete Pet</PrimaryButton>
+                <PrimaryButton @click="deletePet(pets.id)" style="background: #A82726" >Delete Pet</PrimaryButton>
             </div>
         </div>
     </div>

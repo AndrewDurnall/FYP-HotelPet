@@ -39,10 +39,10 @@ import { Head } from '@inertiajs/inertia-vue3';
 
                     <td>
                         <!-- edit button redirects the user to the edit form for the booking with the id passed in the url -->
-                        <a :href="`/bookings/${booking.id}/edit`" class="mr-1 text-yellow-600 underline ">Edit</a>
+                        <a :href="`/bookings/${booking.id}/edit`" style="color: #006400; font-weight: bold" class="mr-1 underline ">Edit</a>
 
                         <!-- delete button to delete the booking based on its booking id -->
-                        <button class="text-red-700 underline" @click="deleteBooking(booking.id)" >Delete</button>
+                        <button style="color: #A82726; font-weight: bold" class="underline" @click="deleteBooking(booking.id)" >Delete</button>
                     </td>
                 </tr>
                 </tbody>

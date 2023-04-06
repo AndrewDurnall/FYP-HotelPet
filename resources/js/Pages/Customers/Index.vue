@@ -47,8 +47,8 @@ import {Head} from '@inertiajs/inertia-vue3';
                                 <td>
                                     <ul>
                                         <li v-for="pet in customer.pets" :key="pet.id">
-                                            <a :href="`/pets/${pet.id}/edit`"
-                                               class="mr-1 text-green-600 underline ">{{ pet.species }} : {{pet.petName }}</a>
+                                            <a :href="`/pets/${pet.id}/edit`" style="color: #006400; font-weight: bold"
+                                               class="mr-1 underline ">{{ pet.species }} : {{pet.petName }}</a>
 
                                         </li>
                                     </ul>
@@ -56,10 +56,10 @@ import {Head} from '@inertiajs/inertia-vue3';
 
                                 <td>
                                     <!-- edit button redirects the user to the edit form for the customer with the id passed in the url -->
-                                    <a :href="`/customers/${customer.id}/edit`" class="mr-1 text-yellow-600 underline ">Edit</a>
+                                    <a :href="`/customers/${customer.id}/edit`" style="color: #006400; font-weight: bold" class="mr-1 underline ">Edit</a>
 
                                     <!-- delete button to delete the customer based on its customer id -->
-                                    <button class="text-red-700 underline" @click="deleteCustomer(customer.id)">Delete
+                                    <button style="color: #A82726; font-weight: bold" class="underline" @click="deleteCustomer(customer.id)">Delete
                                     </button>
                                 </td>
                             </tr>
