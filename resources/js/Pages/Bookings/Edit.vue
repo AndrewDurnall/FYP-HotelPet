@@ -25,6 +25,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
                         <!-- providing details of the existing booking for ease of reference above the date selection which checks availability-->
                         <h2 class="font-semibold text-xl text-gray-800 leading-tight">Existing Booking Details</h2>
                         <ul>
+                            <li>Booking ID - {{booking.id}}</li>
                             <li>{{booking.customer.firstName}} {{booking.customer.lastName}} - {{booking.customer.houseNumberOrName}} {{booking.customer.addressLine1}}</li>
                             <li>{{booking.pens.description}} {{booking.pens.penNumber}}</li>
                             <li>From: {{formatDate(booking.startDate)}} To: {{formatDate(booking.endDate)}}</li>
@@ -36,12 +37,12 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 
                             <div id="datepickers" class="max-w-7xl mx-auto ">
-                                <div class="w-1/3 flex justify-between">
+                                <div>
                                     <label for="start-date">New Start Date:</label>
                                     <input required type="date" id="start-date" name="startDate" v-model="form.startDate" @change="checkAvailabilityEdit" >
                                 </div>
                                 <br>
-                                <div class="w-1/3 flex justify-between">
+                                <div>
                                     <label for="end-date">New End Date:</label>
                                     <input required type="date" id="end-date" name="endDate" v-model="form.endDate" @change="checkAvailabilityEdit">
                                 </div>

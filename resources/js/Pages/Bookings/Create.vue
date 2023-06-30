@@ -27,12 +27,12 @@ import {Inertia} from '@inertiajs/inertia'
                         <form @submit.prevent="form.post(route('bookings.store'), { onSuccess: () => form.reset() })">
 
                             <div id="datepickers" class="max-w-7xl mx-auto ">
-                                <div class="w-1/3 flex justify-between">
+                                <div>
                                     <label for="start-date">Start Date:</label>
                                     <input required type="date" id="start-date" name="startDate" v-model="form.startDate" @change="checkAvailability" >
                                 </div>
                                 <br>
-                                <div class="w-1/3 flex justify-between">
+                                <div>
                                     <label for="end-date">End Date:</label>
                                     <input required type="date" id="end-date" name="endDate" v-model="form.endDate" @change="checkAvailability">
                                 </div>

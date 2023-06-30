@@ -22,6 +22,7 @@ import {Head} from '@inertiajs/inertia-vue3';
                         <table class="col-auto w-full">
                             <thead>
                             <tr>
+                                <th class="text-left">Pen ID</th>
                                 <th class="text-left">Pen Number</th>
                                 <th class="text-left">Pen Description</th>
                             </tr>
@@ -32,7 +33,7 @@ import {Head} from '@inertiajs/inertia-vue3';
                                                   editing and deleting the pen for each pen in the pens table -->
                             <tr class="bg-white overflow-hidden shadow-sm sm:rounded-lg d-flex justify-content-around border-b-2"
                                 v-for="pen in pens" :key="pens.id">
-
+                                <td class="pr-1 text-left">{{ pen.id }}</td>
                                 <td class="pr-1 text-left">{{ pen.penNumber }}</td>
                                 <td class="pr-1 text-left">{{ pen.description }}</td>
 

@@ -217,5 +217,56 @@ class BookingsSeeder extends Seeder
             'created_at'=> DB::raw('CURRENT_TIMESTAMP'),
         ]);
 
+
+        DB::table('bookings')->insert([
+            'pens_id' => 4,
+            'customer_id' => 4,
+            'startDate' => Carbon::parse('2023-05-20'),
+            'endDate' => Carbon::parse('2023-05-30'),
+            'updated_at'=> DB::raw('CURRENT_TIMESTAMP'),
+            'created_at'=> DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('bookings')->insert([
+            'pens_id' => 5,
+            'customer_id' => 1,
+            'startDate' => Carbon::parse('2023-05-17'),
+            'endDate' => Carbon::parse('2023-06-01'),
+            'updated_at'=> DB::raw('CURRENT_TIMESTAMP'),
+            'created_at'=> DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('bookings')->insert([
+            'pens_id' => 7,
+            'customer_id' => 2,
+            'startDate' => Carbon::parse('2023-03-07'),
+            'endDate' => Carbon::parse('2023-06-03'),
+            'updated_at'=> DB::raw('CURRENT_TIMESTAMP'),
+            'created_at'=> DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('bookings')->insert([
+            'pens_id' => 8,
+            'customer_id' => 3,
+            'startDate' => Carbon::parse('2023-05-23'),
+            'endDate' => Carbon::parse('2023-05-26'),
+            'updated_at'=> DB::raw('CURRENT_TIMESTAMP'),
+            'created_at'=> DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('bookings')->insert([
+            'pens_id' => 9,
+            'customer_id' => 4,
+            'startDate' => Carbon::parse('2023-05-25'),
+            'endDate' => Carbon::parse('2023-05-28'),
+            'updated_at'=> DB::raw('CURRENT_TIMESTAMP'),
+            'created_at'=> DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('bookings')->insert([
+            'pens_id' => 10,
+            'customer_id' => 1,
+            'startDate' => Carbon::parse('2023-05-21'),
+            'endDate' => Carbon::parse('2023-07-03'),
+            'updated_at'=> DB::raw('CURRENT_TIMESTAMP'),
+            'created_at'=> DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+
+
     }
 }

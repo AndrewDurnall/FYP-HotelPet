@@ -48,8 +48,8 @@ import {Head} from '@inertiajs/inertia-vue3';</script>
                                 <tr v-for="pens in pens" :key="pens.id">
                                     <td
                                         class="text-center font-weight-bold border-2"
-                                        style="vertical-align: middle; text-align: center;">
-                                        {{ pens.description }} {{ pens.penNumber }}
+                                        style="vertical-align: middle; text-align: left;">
+                                        ID:{{ pens.id }} || {{ pens.description }} {{ pens.penNumber }}
                                     </td>
                                     <td
                                         v-for="day in days"
@@ -63,7 +63,7 @@ import {Head} from '@inertiajs/inertia-vue3';</script>
                                                 v-for="booking in getBookingsForPenAndDay(pens.id, day)"
                                                 :key="booking.id"
                                                 style="font-size: 14px; line-height: 1.5; background-color: lightblue">
-                                                <span>{{ booking.customer.firstName }} {{ booking.customer.lastName }}</span>
+                                                <span>({{ booking.id }})  {{ booking.customer.firstName }} {{ booking.customer.lastName }}</span>
                                             </li>
                                         </ul>
                                     </td>
